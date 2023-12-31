@@ -1,0 +1,107 @@
+openapi: 3.0.0
+info:
+  title: Laravel Profile API
+  version: 1.0.0
+paths:
+  /api/profiles/{id}:
+    get:
+      summary: Get a profile by ID
+      parameters:
+        - name: id
+          in: path
+          description: Profile ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                profile:
+                  id: 1
+                  nama: "<string>"
+                  email: "<string>"
+                  no_telp: "<string>"
+                  jabatan: "<string>"
+                  created_at: "<string>"
+                  updated_at: "<string>"
+
+    put:
+      summary: Update a profile by ID
+      parameters:
+        - name: id
+          in: path
+          description: Profile ID
+          required: true
+          schema:
+            type: integer
+
+        - in: body
+          name: profile
+          description: Profile data to update
+          required: true
+          content:
+            application/json:
+              example:
+                nama: "<string>"
+                email: "<string>"
+                no_telp: "<string>"
+                jabatan: "<string>"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                profile:
+                  id: 1
+                  nama: Updated Name
+                  email: "<string>"
+                  no_telp: "<string>"
+                  jabatan: "<string>"
+                  created_at: "<string>"
+                  updated_at: "<string>"
+
+  /api/profiles:
+    post:
+      summary: Create a new profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              nama: "<string>"
+              email: "<string>"
+              no_telp: "<string>"
+              jabatan: "<string>"
+      responses:
+        '201':
+          description: Profile created successfully
+          content:
+            application/json:
+              example:
+                profile:
+                  id: 4
+                  nama: "<string>"
+                  email: "<string>"
+                  no_telp: "<string>"
+                  jabatan: "<string>"
+
+    delete:
+      summary: Delete a profile by ID
+      parameters:
+        - name: id
+          in: path
+          description: Profile ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Profile deleted successfully
+          content:
+            application/json:
+              example:
+                message: "<string>"
